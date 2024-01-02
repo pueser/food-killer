@@ -1,0 +1,12 @@
+@charset "UTF-8";
+footer{
+	color: #fff;
+	background-color:  #D0B1F0; 
+	bottom: 0;
+	position: absolute;
+	height: 10rem;
+	width: 100vw;
+}
+p:nth-last-child(1) {
+	margin-bottom: 0
+}

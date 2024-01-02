@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* 상단 네브바 설정 */
+.navbar-brand {
+	margin-left: 400px;
+	margin-right: 50px;
+	color: #B942F5;
+	font-weight: bold;
+	font-size: 35px;
+}
+.navbar-brand:visited{
+	color:#B942F5;
+}
+.d-flex{
+	margin-top: 20px;
+	margin-right: 50px;	
+}
+.btn-outline-success{
+	border-color: #B942F5;
+	color: #B942F5;
+}
+.btn-outline-success:hover{
+	background-color: #B942F5;
+	border-color: #fff;
+	color: #fff;
+}
+.form-control{
+	  width:400px;
+	  height: 50px;
+}
+.nav-item{
+	margin-right: 20px;
+	font-weight: bold;
+}
+.nav-link:hover{
+	color: #B942F5;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+/* 상단 네브바 설정 끝 */

@@ -1,0 +1,167 @@
+@charset "UTF-8";
+	#wrap{
+	min-height: calc(100vh - 10rem);
+	position: relative;
+	}
+	
+     div.container{
+      margin-top: 10px;
+      padding-left: 100px;
+    }
+ 
+    div.create{
+    width: 800px;
+    text-align: center;
+    padding: 30px;
+    padding-bottom:16px;
+    margin: auto;
+    }
+ 
+    table{
+    height: 500px;
+    width: 1200px;
+    border: 1px solid black;
+    margin-right: auto;
+    margin-left: auto;
+    }
+    
+    caption{
+    text-align: left;
+    }
+ 	#emailselect{
+ 	padding: 5px;
+ 	font-size: 15px;
+ 	}
+    .col1 {
+    font-size: 18px;
+    background-color: #e8e8e8;
+    padding: 30px;
+    text-align: right;
+    font-weight: bold;
+    border-bottom: 1px dotted black;
+    border-right: 1px dotted black;
+    }
+ 
+    .col2 {
+    text-align: left;
+    padding: 15px;
+    font-size:17px;
+    border-bottom: 1px dotted black;
+    }
+ 
+    .but1 {
+    height: 30px;
+    width: 90px;
+    color: black;
+    background-color: #b9b9b9;
+    border-color: #b9b9b9;
+    font-size:15px;
+    }
+ 
+    .but2 {
+    height: 30px;
+    width: 180px;
+    color: black;
+    background-color: #b9b9b9;
+    border-color: #b9b9b9;
+    font-size:15px;
+    }
+ 
+    .but3 {
+    height: 35px;
+    width: 150px;
+    background-color: white;
+    border: 2px solid black;
+    }
+ 
+    .but4{
+    height: 35px;
+    width: 150px;
+    background-color: white;
+    border: 2px solid black;
+    }
+    
+    .but5{
+    height: 30px;
+    width: 100px;
+    color: white;
+    background-color: #B942F5;
+    border-color: #B942F5;
+    font-size:15px;
+    }
+    
+    .but6{
+    height: 30px;
+    width: 150px;
+    color: black;
+    background-color: #b9b9b9;
+    border-color: #b9b9b9;
+    font-size:15px;
+    }
+    
+    .but1:hover {
+    background-color: #B942F5;
+    color: white;
+    border: 2px solid #B942F5;
+    }
+ 
+    .but2:hover {
+    background-color: #B942F5;
+    color: white;
+    border: 2px solid #B942F5;
+    }
+    
+ 	.but6:hover {
+    background-color: #B942F5;
+    color: white;
+    border: 2px solid #B942F5;
+    }
+    .but3:hover {
+    background-color: #B942F5;
+    color: white;
+    border: 2px solid #B942F5;
+    }
+ 
+    .but4:hover {
+    background-color: #B942F5;
+    color: white;
+    border: 2px solid #B942F5;
+    }
+    
+    tr> td >p{
+    font-size: 0.7em;
+    }
+ 
+    .g{
+    font-size: 0.7em;
+    }
+ 
+    .c{
+    font-size: 0.7em;
+    }
+ 
+    .a{
+    font-size: 0.7em;
+    }
+    
+    #num1, #num2, #num3, #num9, #num10{
+    color: red;
+    padding: 5px;
+    }
+    #num7, #num4, #num8{
+    padding: 5px;
+    height: 15.333px;
+    	
+    }
+    #num10{
+    	margin-bottom: 0px;
+    }
+    #num5{
+    	font-size: 0.7em;
+    }
+    #emailChck{
+    	
+    	padding: 3px 10px;
+    	font-size: 15px;
+    }
+ 

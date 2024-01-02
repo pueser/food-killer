@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="restaurantMapper">
+	<!-- 카테고리별 식당 정보 가져오기 -->
+	<select id="listAll" parameterType="hashMap" resultType="kr.co.restaurant.domain.RestaurantDTO">
+	
+		SELECT *
+		FROM(
+    		SELECT  rownum as rn, restId, fcltyNm, ctgryTwoNm, legaldongNm, restUuid, restFileName
+		    FROM(
+		        SELECT restaurant.restId, restaurant.fcltyNm, restaurant.ctgryTwoNm, restaurant.legaldongNm,restaurantImg.restUuid, restaurantImg.restFileName
+		        FROM	restaurant
+				        INNER JOIN restaurantImg
+				        ON restaurant.restId = restaurantImg.restId
+				        WHERE 
+				        <trim prefix=" ctgryTwoNm in (" suffix=") " prefixOverrides=",">
+							<if test="foodAll==1">
+								,'남미음식','동아시아음식','동남아시아음식','동아시아음식','서아시아음식','인도아시아음식','북미음식','아프리카음식','아프리카','오세아니아음식','유럽음식','중동음식','카브리해음식','지중해음식'
+							</if>
+							<if test="southAmeri==1">
+								 ,'남미음식' 
+							</if>
+							<if test="aisa==1">
+								 ,'동아시아음식','동남아시아음식','서아시아음식','인도아시아음식'
+							</if>
+							<if test="northAmeri==1">
+								 ,'북미음식'
+							</if>
+							<if test="afri==1">
+								 ,'아프리카음식','아프리카'
+							</if>
+							<if test="oceania==1">
+								 ,'오세아니아음식'
+							</if>
+							<if test="eur==1">
+								 ,'유럽음식'
+							</if>
+							<if test="medEast==1">
+								 ,'중동음식'
+							</if>
+							<if test="carriSea==1">
+								 ,'카브리해음식'
+							</if>
+							<if test="medTerr==1">
+								 ,'지중해음식'
+							</if>
+						</trim> 
+						<trim prefix="AND (" prefixOverrides="AND"  suffix=")">
+					 		<if test="serviceAll==1">
+								
+							</if>
+					 		<if test="freParkngAt==1">
+					 			AND freParkngAt= '무료주차 가능'
+					 		</if>
+					 		<if test="valetParkngPosblAt==1">
+					 			AND valetParkngPosblAt='발렛주차 가능'
+					 		</if>
+					 		<if test="infnChairLendPosblAt==1">
+					 			AND infnChairLendPosblAt='유아의자 대여 가능'
+					 		</if>
+					 		<if test="wchairHoldAt==1">
+					 			AND wchairHoldAt='휠체어 대여 가능'
+					 		</if>
+					 		<if test="petPosblAt==1">
+					 			AND petPosblAt='반려동물 동반 입장가능'
+					 		</if>
+					 		<if test="vgtrMenuHoldAt==1">
+					 			AND vgtrMenuHoldAt='채식 메뉴 있음'
+					 		</if>
+						</trim>
+						ORDER BY fcltyNm ASC)
+			<![CDATA[  
+   			WHERE rownum <= #{pageNum}*#{amount})
+		WHERE rn > (#{pageNum}-1)*#{amount}
+		]]>		
+</select>
+	
+	<sql id="ctgryTwoNm">
+		<trim prefix="in (" suffix=")" suffixOverrides=",">
+			<foreach  item="item" collection="list">
+				#{ item },
+			</foreach>
+		</trim>
+	</sql>
+	
+	<!-- 메인화면 swife이미지 8개 select -->
+	<select id="foodListSwife" parameterType="java.util.ArrayList" resultType="kr.co.restaurant.domain.RestaurantDTO">
+		<![CDATA[ 
+			SELECT *
+			FROM (
+			    SELECT *
+			    FROM restaurant
+			    INNER JOIN restaurantImg
+			    ON restaurant.restId = restaurantImg.restId
+			    WHERE restaurant.ctgryTwoNm 
+		]]>
+		<include refid="ctgryTwoNm"></include>
+		<![CDATA[ 
+			)WHERE ROWNUM <=8
+		]]>
+	</select>
+	
+	<!--  식당 페이징 처리
+	<select id="getListPaging" resultType="kr.co.restaurant.domain.RestaurantDTO">
+	<![CDATA[
+		SELECT restId ,fcltyNm ,ctgryTwoNm, legaldongNm
+		FROM(
+		    SELECT rownum  as rn, restId ,fcltyNm ,ctgryTwoNm, legaldongNm
+		    FROM restaurant
+		    WHERE rownum <= #{pageNum}*#{amount}
+		)
+		WHERE rn > (#{pageNum}-1)*#{amount}
+	]]>
+	</select> -->
+	<select id="explain" resultType="kr.co.restaurant.domain.RestaurantDTO">
+	SELECT *
+		FROM restaurant
+		INNER JOIN restaurantImg
+		ON restaurant.restId = restaurantImg.restId
+		WHERE	
+		<trim prefix=" ctgryTwoNm in (" suffix=") " prefixOverrides=",">
+			<if test="foodAll==1">
+				,'남미음식','동아시아음식','동남아시아음식','동아시아음식','서아시아음식','인도아시아음식','북미음식','아프리카음식','아프리카','오세아니아음식','유럽음식','중동음식','카브리해음식','지중해음식'
+			</if>
+			<if test="southAmeri==1">
+				 ,'남미음식' 
+			</if>
+			<if test="aisa==1">
+				 ,'동아시아음식','동남아시아음식','서아시아음식','인도아시아음식'
+			</if>
+			<if test="northAmeri==1">
+				 ,'북미음식'
+			</if>
+			<if test="afri==1">
+				 ,'아프리카음식','아프리카'
+			</if>
+			<if test="oceania==1">
+				 ,'오세아니아음식'
+			</if>
+			<if test="eur==1">
+				 ,'유럽음식'
+			</if>
+			<if test="medEast==1">
+				 ,'중동음식'
+			</if>
+			<if test="carriSea==1">
+				 ,'카브리해음식'
+			</if>
+			<if test="medTerr==1">
+				 ,'지중해음식'
+			</if>
+		</trim> 
+		<trim prefix="AND (" prefixOverrides="AND"  suffix=")">
+	 		<if test="serviceAll==1">
+				
+			</if>
+	 		<if test="freParkngAt==1">
+	 			AND freParkngAt= '무료주차 가능'
+	 		</if>
+	 		<if test="valetParkngPosblAt==1">
+	 			AND valetParkngPosblAt='발렛주차 가능'
+	 		</if>
+	 		<if test="infnChairLendPosblAt==1">
+	 			AND infnChairLendPosblAt='유아의자 대여 가능'
+	 		</if>
+	 		<if test="wchairHoldAt==1">
+	 			AND wchairHoldAt='휠체어 대여 가능'
+	 		</if>
+	 		<if test="petPosblAt==1">
+	 			AND petPosblAt='반려동물 동반 입장가능'
+	 		</if>
+	 		<if test="vgtrMenuHoldAt==1">
+	 			AND vgtrMenuHoldAt='채식 메뉴 있음'
+	 		</if>
+		</trim>
+		ORDER BY fcltyNm ASC
+	</select>
+	
+	
+	
+	
+	
+	<!-- 식당 이미지 (9502개 삽입) -->
+	<!-- 식당 아이디값 가져오기(식당이미지 DB넣을 때 Fk사용)(9502개) -->
+    <select id="selectRestId" resultType="String">
+	SELECT restId
+	FROM restaurant
+	</select>
+
+	<!-- 식당이미지 넣기(9502개) -->
+	<insert id="insertImgList" parameterType="hashMap">
+	INSERT INTO restaurantImg (restUuid, restFileName, restId) 
+	VALUES (#{restUuid}, #{restFileName}, #{restId})
+	</insert>
+	
+</mapper>

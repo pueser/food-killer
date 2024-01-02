@@ -1,0 +1,99 @@
+@charset "UTF-8";
+#wrap{
+	min-height: calc(100vh - 10rem);
+	position: relative;
+}
+h3{
+	padding-top: 10px;
+	font-weight: bold;
+}
+
+ul>li{
+	list-style: none
+	}
+a{
+	text-decoration: none;
+	}
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+	}
+.clearfix{
+	padding-left: 10px;
+}
+#joinForm{
+	/* width: 460px; */
+	width: 1200px;
+	margin: 0 auto;
+	}
+ul.join_box{
+	border: 1px solid #ddd;
+	background-color: #fff;
+	}
+.checkBox,.checkBox>ul{
+	position: relative;
+	}
+.checkBox>ul>li{
+	float: left;
+	}
+.checkBox>ul>li:first-child{
+	width: 85%;
+	padding: 15px;
+	font-weight: 600;
+	}
+.checkBox>ul>li:nth-child(2){
+	position: absolute;
+	top: 50%;
+	right: 30px;
+	margin-top: -12px;
+	}
+.checkBox textarea{
+	width: 96%;
+	height: 70px; 
+	margin: 0 2%;
+	background-color: #f7f7f7;
+	color: #888; 
+	border: none;
+	}
+#chk1, #chk2{
+	width: 20px;
+	height: 20px;
+	accent-color: #B942F5;
+	}
+div.create{
+    width: 800px;
+    text-align: center;
+    padding: 30px;
+    padding-bottom:16px;
+    margin: auto;
+    }
+    
+    .but3 {
+    height: 35px;
+    width: 150px;
+    background-color: white;
+    border: 2px solid black;
+    }
+ 
+    .but4{
+    height: 35px;
+    width: 150px;
+    background-color: white;
+    border: 2px solid black;
+    }
+    
+    .but3:hover {
+    background-color: #B942F5;
+    color: white;
+    border: 2px solid #B942F5;
+    }
+ 
+    .but4:hover {
+    background-color: #B942F5;
+    color: white;
+    border: 2px solid #B942F5;
+    }
+    #num1{
+    	color: red;
+    }

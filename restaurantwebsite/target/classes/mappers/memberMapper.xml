@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="memberMapper">
+ 	 <!--회원가입 및 약관동의 -->
+	<insert id="insertMember">
+	 	INSERT INTO member(nickName, email, pwd, memberState ,T1, T2, T3, termsAgree)
+	 	VALUES(#{nickName}, #{email}, #{pwd}, 'ING'
+	 	<!-- 약관동의1 -->
+	 	<trim prefix=" ,">
+	 	<if test="T1==1">
+	 		'Y'
+	 	</if>
+	 	<if test="T1==null">
+	 		'N'
+	 	</if>
+	 	</trim>
+	 	<!-- 약관동의2 -->
+	 	<trim prefix=" ,">
+	 	<if test="T2==1">
+	 		'Y'
+	 	</if>
+	 	<if test="T2==null">
+	 		'N'
+	 	</if>
+	 	</trim>
+	 	<!-- 약관동의3 -->
+	 	<trim prefix=" ,">
+	 	<if test="T3==1">
+	 		'Y'
+	 	</if>
+	 	<if test="T3==null">
+	 		'N'
+	 	</if>
+	 	</trim>
+	 	<!-- 모든 약관동의 여부 -->
+	 	<trim prefix=" ," suffix=")">
+	 	<if test="T1==1 and T2==1 and T3==1" >
+	 		'Y'
+	 	</if>
+	 	<if test="T1==null or T2==null or T3==null">
+	 		'N'
+	 	</if>
+	 	</trim>
+	 	
+	 	<selectKey keyProperty="nickName" resultType="String" order="AFTER">
+			SELECT nickName
+			FROM member
+			WHERE nickName = #{nickName}
+		</selectKey>
+	</insert>
+	
+	<!-- 회원 기본 프로필 저장 -->
+	<insert id="insertBasicProfile" parameterType="hashMap">
+		INSERT INTO memberAttach(uuid, fileName, email)
+		VALUES(#{uuid}, #{fileName}, #{email})
+	</insert>
+	
+	<!-- 로그인 체크 -->
+	<select id="read" resultType="kr.co.restaurant.domain.MemberDTO">
+		SELECT email, nickName, pwd, memberState
+		FROM member 
+		WHERE email = #{email} 
+		AND pwd = #{pwd}
+	</select>
+	
+	<!-- 닉네임 중복검사 -->
+	<select id="selectNickName" resultType="int">
+		SELECT count(*)
+		FROM member
+		WHERE nickName = #{nickName} AND memberState = 'ING'
+	</select>
+	
+	<!-- 이메일 존재여부 확인 -->
+	<select id="selectEmail" resultType="int">
+		SELECT count(*)
+		FROM member
+		WHERE email = #{email} AND memberState = 'ING'
+	</select>
+	
+	<!-- 프로필 사진 가져오기 -->
+	<select id="selectProfile" resultType="kr.co.restaurant.domain.MemberAttachDTO">
+		SELECT uuid, fileName
+		FROM memberAttach
+		WHERE email = #{email}
+	</select>
+	
+	<!-- 이메일 and 회원상태(WITHDRAW) 회원 존재 확인 -->
+	<select id="selectMemberState" resultType="int">
+		SELECT count(*)
+		FROM member
+		WHERE email = #{email} AND memberState = 'WITHDRAW'
+	</select>
+	
+	<!-- 재가입 시, 회원상태(ING) 변경 -->
+	<update id="updateMemberState">
+		UPDATE member
+		SET memberState = 'ING', nickName = #{nickName}, pwd = #{pwd}, regdate = sysdate, termsDate = sysdate,  widthdrawalAgree = '', widthdrawalDate = ''
+		<!-- 약관동의1 -->
+	 	<trim prefix=" , T1 = ">
+	 	<if test="T1==1">
+	 		'Y'
+	 	</if>
+	 	<if test="T1==null">
+	 		'N'
+	 	</if>
+ 	 	</trim>
+	 	<!-- 약관동의2 -->
+	 	<trim prefix=" , T2 =">
+	 	<if test="T2==1">
+	 		'Y'
+	 	</if>
+	 	<if test="T2==null">
+	 		'N'
+	 	</if>
+	 	</trim>
+	 	<!-- 약관동의3 -->
+	 	<trim prefix=" , T3 =">
+	 	<if test="T3==1">
+	 		'Y'
+	 	</if>
+	 	<if test="T3==null">
+	 		'N'
+	 	</if>
+	 	</trim>
+	 	<!-- 모든 약관동의 여부 -->
+	 	<trim prefix=" , termsAgree = " >
+	 	<if test="T1==1 and T2==1 and T3==1" >
+	 		'Y'
+	 	</if>
+	 	<if test="T1==null or T2==null or T3==null">
+	 		'N'
+	 	</if>
+	 	</trim>
+		WHERE email = #{email}
+		<selectKey keyProperty="nickName" resultType="String" order="AFTER">
+			SELECT nickName
+			FROM member
+			WHERE nickName = #{nickName}
+		</selectKey>
+	</update> 
+	
+	<!-- 임시 비밀번호 발급 후 변경 -->
+	<update id="updatePwd" parameterType="hashmap">
+		UPDATE member
+		SET pwd = #{ranPwd}
+		WHERE email = #{email}
+	</update>
+	
+	<!-- 최근 접속일 업데이트 -->
+	<update id="update">
+		UPDATE member
+		SET updatedate= sysdate
+		WHERE email = #{email}
+	</update>
+	
+	<!-- 회원 프로필 사진 수정 -->
+	<update id="updateProfile" parameterType="hashmap">
+		UPDATE memberAttach
+		SET uuid= #{uuid},
+			fileName=#{fileName}
+		WHERE email = #{email}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<update id="withDrawMember" parameterType="hashmap">
+		UPDATE member
+		SET memberState = 'WITHDRAW', nickName = null, widthdrawalAgree = #{widthdrawalAgree}, widthdrawalDate = sysdate
+		WHERE nickName = #{nickName} AND email = #{email} AND pwd = #{pwd}
+	</update>
+	
+	<!-- 회원 profile 삭제 -->
+	<delete id="deleteProfileMember">
+		DELETE
+		FROM memberAttach
+		WHERE email = #{email}
+	</delete>
+	
+	
+ </mapper>

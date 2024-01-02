@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+/* 메인 페이지 위치 이미지 */
+ .restMap iframe{
+ 	height: 100vh;
+ 	width:100%;
+}   
+.restMap{
+	position: relative;
+}
+/* 위치 동의 버튼 */
+.btn-outline-dark{
+	position: absolute;
+    top: 860px;
+    left: 93%;
+}
+.btn-outline-dark:hover{
+	background-color: #B942F5;
+	border-color: #B942F5;
+}
+
+/* 지도위에 해당 닉네임 표시 */
+#userName{
+	
+	position: absolute;
+	top: 45px;
+	left: 5%;
+	line-height: 70px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background-color:  rgba(255,255,255,0.9);
+	color: #B942F5;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 50px;
+	text-decoration: none;
+	z-index: 5;
+	border-radius: 20px;
+	box-shadow: 3px 3px 3px 3px #999;
+} 
+
+/* 상단이동 버튼 */
+#topButton{
+	position: fixed;
+	right: 5px;
+	bottom: 5px;
+}
+.bi-arrow-up-square-fill path{
+	color: #B942F5;
+}
+
+/* 이미지 캐러셀 */
+#wrapper{
+	margin:0 auto;
+	margin-right:200px;
+	margin-left:200px;
+	margin-bottom: 80px;
+	position: relative;
+}
+img{
+	width: auto; height: auto;
+	height: 200px;
+	width:300px;
+	border-radius: 20px;
+	background-color:rgba(180, 180, 180, 0.67);
+}
+a {
+	text-decoration: none;
+	color: black
+}
+#menuIrum > h2{
+	font-size: 25px;
+	font-style: bold;
+	
+}
+#menuIrum > p{
+	font-size: 15px;
+	
+}
+#titleA{
+	margin-top:100px;
+	margin-left:200px;
+	font-weight: bold;
+	font-size: 25px;
+	color: #B942F5;
+}
+#titleB{
+	margin-top:100px;
+	margin-left:200px;
+	font-weight: bold;
+	font-size: 25px;
+	color: #B942F5;
+}
+#titleC{
+	margin-top:100px;
+	margin-left:200px;
+	font-weight: bold;
+	font-size: 25px;
+	color: #B942F5;
+}
+#titleD{
+	margin-top:100px;
+	margin-left:200px;
+	font-weight: bold;
+	font-size: 25px;
+	color: #B942F5;
+}
+#titleE{
+	margin-top:100px;
+	margin-left:200px;
+	font-weight: bold;
+	font-size: 25px;
+	color: #B942F5;
+}
+.item{
+	margin-right: 25px;
+
+}
+@media (max-width: 768px){
+	/* 지도위에 해당 닉네임 표시 */
+	#userName{
+		position: absolute;
+		top: 45px;
+		left: 5%;
+		line-height: 70px;
+		padding-left: 20px;
+		padding-right: 20px;
+		background-color:  rgba(255,255,255,0.9);
+		color: #B942F5;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 20px;
+		text-decoration: none;
+		z-index: 5;
+		border-radius: 20px;
+		box-shadow: 3px 3px 3px 3px #999;
+	} 
+}
+footer {
+    color: #fff;
+    background-color: #D0B1F0;
+    bottom: 0;
+    height: 10rem;
+}
+p:nth-last-child(1) {
+	margin-bottom: 0
+}

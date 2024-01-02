@@ -1,0 +1,52 @@
+@charset "UTF-8";
+.findPwd-wrapper{
+    width: 500px;
+    padding:40px;
+    box-sizing: border-box;
+    margin: 0 auto;
+	position: relative;
+	margin-top: 48px;
+	margin-bottom: 200px;
+}
+.findPwd-wrapper > h2{
+	font-weight: bold;
+	font-size: 50px;
+	margin-left: 10%;
+    color: #B942F5;
+    margin-bottom: 20px;
+}
+#Chck{
+	font-size: 15px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#findPwd-form > input{
+    width: 100%;
+    height: 50px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+#findPwd-form > input:hover{
+	background-color: #F8F8F8;
+}
+#findPwd-form > input::placeholder{
+    color: #D2D2D2;
+}
+
+#findPwd-form > input[type="button"]{
+	margin-top: 20px;
+    color: #fff;
+    font-size: 20px;
+    margin-top: 20px;
+    background-color: #B942F5;
+}
+#findPwd-form > input[type="button"]:hover{
+    background-color:#D0B1F0;
+}
+.findPwd-wrapper > p {
+	padding-top: 20px;
+	padding-bottom: 10px;
+}
