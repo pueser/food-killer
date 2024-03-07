@@ -19,6 +19,8 @@ import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,16 +35,15 @@ public class ProfileUploadController {
 	@Autowired
 	public IMemberService service;
 	
-	String uploadFolder = "C:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile";
+	String uploadFolder = "D:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile";
 	
 	
 	/*profile 파일 업로드 */
-	@PostMapping(value ="/profileUploadAjaxAction", 
-				produces = MediaType.APPLICATION_JSON_UTF8_VALUE) //UTF-8로 인코딩
+	
+	@RequestMapping(value = "/profileUploadAjaxAction", method=RequestMethod.POST, produces = MediaType.APPLICATION_JSON_UTF8_VALUE) //UTF-8로 인코딩
 	@ResponseBody
 	public ResponseEntity<MemberAttachDTO> profileUploadAjaxActionPOST(MultipartFile uploadFile, Model model) {
 		System.out.print("profileUploadAjaxActionPOST..........");
-		
 		
 		/* 이미지 파일 체크 */
 		File checkfile = new File(uploadFile.getOriginalFilename());
@@ -50,6 +51,7 @@ public class ProfileUploadController {
 		
 		try {
 			type = Files.probeContentType(checkfile.toPath());
+			System.out.println("파일 type = " + type);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -89,7 +91,8 @@ public class ProfileUploadController {
 	/*이미지 파일 보여주기*/
 	@GetMapping("/display")
 	public ResponseEntity<byte[]> getImage(String fileName){
-		File file = new File("C:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\" + fileName);
+		File file = new File("D:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\" + fileName);
+		System.out.print("display..........");
 		ResponseEntity<byte[]> result = null;
 		
 		try {
@@ -113,7 +116,7 @@ public class ProfileUploadController {
 		
 		try {
 			/* 썸네일 파일 삭제  파일 생성을 위해 UTF-8 디코딩*/
-			file = new File("C:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\", URLDecoder.decode(fileName, "UTF-8")); 
+			file = new File("D:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\", URLDecoder.decode(fileName, "UTF-8")); 
 			file.delete();
 			
 			/* 원본 파일 삭제 */
