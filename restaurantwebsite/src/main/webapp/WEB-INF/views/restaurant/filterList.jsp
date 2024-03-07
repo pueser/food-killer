@@ -6,6 +6,32 @@
 <link rel="stylesheet" href="../resources/css/filterList.css">
 <link rel="stylesheet" href="../resources/css/main.css">
 <%@ include file="../includes/header.jsp" %>
+<style>
+/* 페이지 css */
+.pageInfo{
+    list-style : none;
+    display: inline-block;
+    margin: 50px 0 0 100px;      
+  }
+.pageInfo li{
+    float: left;
+    font-size: 20px;
+    margin-left: 18px;
+    padding: 2px;
+    font-weight: 500;
+    border: 0;
+  }
+ a:link {color:black; text-decoration: none;}
+ a:visited {color:black; text-decoration: none;}
+ a:hover {color:black; text-decoration: underline;}
+ .active{
+      background-color: #D0B1F0;
+  }
+.pageInfo_wrap{
+	display: flex;
+    justify-content: center;
+}
+</style>
 <section id="map">
 	<div class="restMap" >
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.751331165858!2d126.90398314999999!3d35.16282195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35718c66e2766641%3A0x13e76b577724ed56!2z6rSR7KO86rSR7Jet7IucIOu2geq1rCDqsr3slpHroZwxMDPrsojquLg!5e0!3m2!1sko!2skr!4v1693549762414!5m2!1sko!2skr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -23,7 +49,9 @@
 	<div class="container">
 		<c:forEach items ="${ restListAll}" var="list">
 			<article>
-				<a href="#">
+				<c:set var="restId" value="${list.restId}"></c:set>
+				<c:url value="/restaurant/detailPage?restId=${restId}" var="detailUrl"></c:url>
+				<a href="${detailUrl}">
 					<img src = "${list.restFileName}" alt="이미지가 없습니다.">
 					<div class="text">
 						<h2>${list.fcltyNm }</h2>
@@ -45,6 +73,53 @@
 			</article>
 		</div>
 	</c:if>
+	<!-- 페이지 처리 -->
+	<div class="pageInfo_wrap" style="padding-right: 200px">
+        <div class="pageInfo_area">
+        	<ul class = "pageInfo">
+        		<!-- 이전페이지 버튼 -->
+                <c:if test="${pageMaker.prev}">
+                    <li class="pageInfo_btn previous"><a href="${pageMaker.startPage-1}" style="border: none"><</a></li>
+                </c:if>
+                
+	 			<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+	            	 <li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="${num}" style="border: none">${num}</a></li>
+	            </c:forEach>
+	            
+	             <!-- 다음페이지 버튼 -->
+                <c:if test="${pageMaker.next}">
+                    <li class="pageInfo_btn next"><a href="${pageMaker.endPage + 1 }" style="border: none">></a></li>
+                </c:if>    
+ 
+            </ul>
+        </div>
+    </div>
+	<form method="GET" id="moveForm">
+		<!-- 페이징 -->
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+        <input type="hidden" name="amount" value="${pageMaker.cri.amount }"> 
+        <!-- 카테고리 -->
+        <input type="hidden" name="foodAll" value="${categoryDto.foodAll}" >
+        <input type="hidden" name="southAmeri" value="${categoryDto.southAmeri}" >
+        <input type="hidden" name="aisa" value="${categoryDto.aisa}" >
+        <input type="hidden" name="northAmeri" value="${categoryDto.northAmeri}" >
+        <input type="hidden" name="afri" value="${categoryDto.afri}" >
+        <input type="hidden" name="oceania" value="${categoryDto.oceania}" >
+        <input type="hidden" name="eur" value="${categoryDto.eur}" >
+        <input type="hidden" name="medEast" value="${categoryDto.medEast}" >
+        <input type="hidden" name="carriSea" value="${categoryDto.carriSea}" >
+        <input type="hidden" name="medTerr" value="${categoryDto.medTerr}" >
+        <input type="hidden" name="serviceAll" value="${categoryDto.serviceAll}" >
+        <input type="hidden" name="freParkngAt" value="${categoryDto.freParkngAt}" >
+        <input type="hidden" name="valetParkngPosblAt" value="${categoryDto.valetParkngPosblAt}" >
+        <input type="hidden" name="infnChairLendPosblAt" value="${categoryDto.infnChairLendPosblAt}" >
+        <input type="hidden" name="wchairHoldAt" value="${categoryDto.wchairHoldAt}" >
+        <input type="hidden" name="petPosblAt" value="${categoryDto.petPosblAt}" >
+        <input type="hidden" name="vgtrMenuHoldAt" value="${categoryDto.vgtrMenuHoldAt}" >
+        <!-- 검색어 -->
+        <input type="hidden" name="choDiv" value="${restSearchDto.choDiv}" >
+        <input type="hidden" name="restSearch" value="${cri.restSearch}" >
+	</form>
 </section>
 		
 			
@@ -71,6 +146,15 @@
 	</div>
 </footer>
 <script type="text/javascript">
+let moveForm = $("#moveForm");
 
+$(".pageInfo a").on("click", function(e){
+	 
+    e.preventDefault();
+    moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+    moveForm.attr("action", "/restaurant/restaurant/filterList?");
+    moveForm.submit();
+    
+});
 
 </script>
