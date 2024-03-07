@@ -36,6 +36,8 @@
 			        <label><input id="service" class="service" type="checkbox" name="vgtrMenuHoldAt" value="1" style="width: 20px; height: 20px; accent-color: #B942F5;">채식메뉴 보유</label>
 			</p><br>
 			<p class="doubleselect2">*중복선택가능</p>
+			 <!-- 검색어 -->
+        	<input type="hidden" name="choDiv" value="null" >
 		    <input type="submit" value="필터 적용" id="filterForm" onclick="check_on();">
 		</form>
 	</div>
