@@ -19,4 +19,6 @@ public class Restaurant {
 
 	@SerializedName("data")
 	private List<RestaurantData> data;
+	
+	
 }

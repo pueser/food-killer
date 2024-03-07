@@ -48,5 +48,5 @@ public class RestaurantData {
 	private String petPosblAt;
 	@SerializedName("채식메뉴 보유여부")
 	private String vgtrMenuHoldAt;
-
+	private String chosung;
 }

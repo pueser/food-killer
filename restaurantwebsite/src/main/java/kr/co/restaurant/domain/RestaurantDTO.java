@@ -36,4 +36,9 @@ public class RestaurantDTO {
 	private String restUuid;
 	private String restFileName;
 	
+	//Criteria
+	private int pageNum;
+	private int amount;
+	private int skip;
+	
 }
