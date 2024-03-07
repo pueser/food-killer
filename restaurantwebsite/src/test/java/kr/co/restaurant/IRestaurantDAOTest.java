@@ -14,6 +14,7 @@ import kr.co.restaurant.domain.CategoryDTO;
 import kr.co.restaurant.domain.Criteria;
 import kr.co.restaurant.domain.RestaurantDTO;
 import kr.co.restaurant.domain.RestaurantImgDTO;
+import kr.co.restaurant.domain.RestaurantSearchDTO;
 import kr.co.restaurant.persistence.IRestaurantDAO;
 import lombok.extern.log4j.Log4j;
 
@@ -104,19 +105,51 @@ public class IRestaurantDAOTest {
 //		restDao.foodListSwipe(ctgryTwoNm);		
 //	}
 	
+//	@Test
+//	public void selectRestaurantPaging() throws Exception {
+//		
+//		CategoryDTO categoryDto = new CategoryDTO();
+//		categoryDto.setFreParkngAt(null);
+//		categoryDto.setValetParkngPosblAt(null);
+//		categoryDto.setInfnChairLendPosblAt(null);
+//		categoryDto.setWchairHoldAt(null);
+//		categoryDto.setPetPosblAt(null);
+//		categoryDto.setVgtrMenuHoldAt(null);
+//		categoryDto.setSouthAmeri(null);
+//		categoryDto.setAisa(null);
+//		categoryDto.setNorthAmeri(null);
+//		categoryDto.setAfri(null);
+//		categoryDto.setOceania(null);
+//		categoryDto.setEur(null);
+//		categoryDto.setMedEast(null);
+//		categoryDto.setCarriSea(null);
+//		categoryDto.setMedTerr(null);
+//		categoryDto.setFoodAll(null);
+//		categoryDto.setServiceAll(null);
+//		
+//		RestaurantSearchDTO restSearchDto = new RestaurantSearchDTO(); 
+//		restSearchDto.setChoDiv("choSrch");
+//		restSearchDto.setRestSearch(null);
+//		restSearchDto.setSearchRange1("가");
+//		restSearchDto.setSearchRange2("나");
+//		
+//		
+//		restDao.restTotalCnt(categoryDto, restSearchDto);
+//	}
+	
 	@Test
 	public void selectRestaurantPaging() throws Exception {
 		
 		CategoryDTO categoryDto = new CategoryDTO();
-		categoryDto.setFreParkngAt("1");
+		categoryDto.setFreParkngAt(null);
 		categoryDto.setValetParkngPosblAt(null);
-		categoryDto.setInfnChairLendPosblAt(null);
+		categoryDto.setInfnChairLendPosblAt("1");
 		categoryDto.setWchairHoldAt(null);
 		categoryDto.setPetPosblAt(null);
 		categoryDto.setVgtrMenuHoldAt(null);
 		categoryDto.setSouthAmeri(null);
-		categoryDto.setAisa("1");
-		categoryDto.setNorthAmeri(null);
+		categoryDto.setAisa(null);
+		categoryDto.setNorthAmeri("1");
 		categoryDto.setAfri(null);
 		categoryDto.setOceania(null);
 		categoryDto.setEur(null);
@@ -126,14 +159,20 @@ public class IRestaurantDAOTest {
 		categoryDto.setFoodAll(null);
 		categoryDto.setServiceAll(null);
 		
+		RestaurantSearchDTO restSearchDto = new RestaurantSearchDTO(); 
+		restSearchDto.setChoDiv(null);
+		restSearchDto.setRestSearch(null);
+		restSearchDto.setSearchRange1(null);
+		restSearchDto.setSearchRange2(null);
+		
 		Criteria cri = new Criteria();
 		cri.setAmount(10);
-		cri.setPageNum(3);
+		cri.setPageNum(1);
+		cri.setRestSearch(null);
 		
-		restDao.listAll(categoryDto,cri);
+		
+		restDao.listAll(categoryDto, cri, restSearchDto);
 	}
-	
-
 	
 
 }
