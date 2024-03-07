@@ -91,7 +91,7 @@ public class MemberController {
 		File file = null;
 		if(!memAttachDto.getUuid().equals("a")) {
 			/*update 전 썸네일 파일 삭제 */
-			file = new File("C:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\", "s_" +  memAttachDto.getUuid() + "_" + memAttachDto.getFileName()); 
+			file = new File("D:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\", "s_" +  memAttachDto.getUuid() + "_" + memAttachDto.getFileName()); 
 			file.delete();
 			
 			/*update 전 원본 파일 삭제 */
@@ -156,7 +156,7 @@ public class MemberController {
 				
 						if(!uuid.equals("a")) {
 							/*update 전 썸네일 파일 삭제 */
-							file = new File("C:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\", "s_" +  uuid + "_" + fileName); 
+							file = new File("D:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile\\", "s_" +  uuid + "_" + fileName); 
 							file.delete();
 							
 							/*update 전 원본 파일 삭제 */
@@ -294,20 +294,20 @@ public class MemberController {
         					"인증 번호는 " + randomNum + "입니다." + 
         					"<br>" + 
         					"해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
-//        try {
-//            
-//            MimeMessage message = mailSender.createMimeMessage();
-//            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-//            helper.setFrom(setFrom);
-//            helper.setTo(toMail);
-//            helper.setSubject(title);
-//            helper.setText(content,true);
-//            mailSender.send(message);
-//            
-//        }catch(Exception e) {
-//            e.printStackTrace();
-//        }
-//        	
+        try {
+            
+            MimeMessage message = mailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+            helper.setFrom(setFrom);
+            helper.setTo(toMail);
+            helper.setSubject(title);
+            helper.setText(content,true);
+            mailSender.send(message);
+            
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        	
         	String num = Integer.toString(randomNum);
         	return ResponseEntity.status(HttpStatus.OK).body(num);
         	

@@ -138,7 +138,6 @@
  
 //파일 controller 전달
  $("input[type='file']").on("change",function(){
-	 
 	 /* 이미지 존재시 삭제 */
 	if($(".imgDeleteBtn").length > 0){
 		/*해당 DB이미지 출력*/
@@ -151,18 +150,18 @@
 	let fileList = fileInput[0].files;
 	let fileObj = fileList[0];
 
-// 	console.log("fileObj : " + fileObj);
-// 	console.log("fileList : " + fileList);
-// 	console.log("fileName : " + fileObj.name);
-// 	console.log("fileSize : " + fileObj.size);
-// 	console.log("fileType(MimeType) : " + fileObj.type);
+ 	console.log("fileObj : " + fileObj);
+ 	console.log("fileList : " + fileList);
+ 	console.log("fileName : " + fileObj.name);
+ 	console.log("fileSize : " + fileObj.size);
+ 	console.log("fileType(MimeType) : " + fileObj.type);
 	
 	if(!fileCheck(fileObj.name, fileObj.size)){
 		return false;
 	}
 	
 	formData.append("uploadFile", fileObj);
-	
+	console.log("formData : " + formData);
 	$.ajax({
 		url: '/restaurant/profileUploadAjaxAction',
     	processData : false,
