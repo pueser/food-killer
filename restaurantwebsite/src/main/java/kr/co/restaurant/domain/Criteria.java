@@ -7,12 +7,13 @@ import lombok.ToString;
 @ToString
 public class Criteria {
 	
+	//검색조건
+	private String restSearch;//검색할 키워드
+	
 	//현재 페이지
 	private int pageNum;
 	//한 페이지 당 보여질 게시물 갯수
 	private int amount;
-	//스킵할 게시물의 수
-	private int skip;
 	//기본생성자
 	public Criteria() {
 		this(1,10);
@@ -22,13 +23,7 @@ public class Criteria {
 		this.pageNum = pageNum;
 		this.amount = amount;
 	}
-	//pagenum과 setamount가 값이 변경되기 때문에, skip???
-	public void setPageNum(int pageNum) {
-		this.skip = (pageNum-1)*this.amount;
-		this.pageNum = pageNum;
-	}
-	public void setAmount(int amount) {
-		this.skip = (this.pageNum-1)*amount;
-		this.amount = amount;
-	}
+	
+
+	
 }
