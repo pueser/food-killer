@@ -1,6 +1,10 @@
 package kr.co.restaurant.domain;
 
+import lombok.Data;
+import lombok.ToString;
 
+@Data
+@ToString
 public class PageMakerDTO {
 	//시작페이지
 	private int startPage;
