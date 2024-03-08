@@ -32,7 +32,7 @@
     justify-content: center;
 }
 </style>
-<section id="map">
+<!-- <section id="map">
 	<div class="restMap" >
 		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3261.751331165858!2d126.90398314999999!3d35.16282195!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35718c66e2766641%3A0x13e76b577724ed56!2z6rSR7KO86rSR7Jet7IucIOu2geq1rCDqsr3slpHroZwxMDPrsojquLg!5e0!3m2!1sko!2skr!4v1693549762414!5m2!1sko!2skr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		<div id="userName">혜진님을 위한 맛집</div>
@@ -42,7 +42,7 @@
 			</svg>
 		</button>
 	</div>
-</section>
+</section> -->
 
 <!--카테고리별 식당 list 출력  -->
 <section class="listB">

@@ -35,7 +35,8 @@ public class ProfileUploadController {
 	@Autowired
 	public IMemberService service;
 	
-	String uploadFolder = "D:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile";
+	//String uploadFolder = "D:\\workspace\\spring4-4.10.0.RELEASE\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile";
+	String uploadFolder = "C:\\Users\\hwang\\git\\food-killer\\restaurantwebsite\\src\\main\\webapp\\resources\\fileUpload\\profile";
 	
 	
 	/*profile 파일 업로드 */

@@ -159,11 +159,12 @@
 	if(!fileCheck(fileObj.name, fileObj.size)){
 		return false;
 	}
-	
+
 	formData.append("uploadFile", fileObj);
 	console.log("formData : " + formData);
+	console.log("fileObj : " + fileObj);
 	$.ajax({
-		url: '/restaurant/profileUploadAjaxAction',
+		url: "/restaurant/profileUploadAjaxAction",
     	processData : false,
     	contentType : false,
     	data : formData,
