@@ -15,7 +15,7 @@ open API를 활용하여 전국의 음식점을 쉽게 찾을 수 있는 웹사�
 
 ## [비밀번호 찾기] ##
 
-<img width="80%" src="https://github.com/pueser/food-killer/assets/117990884/5872ea20-c6fe-4c29-90e4-3a78f74c4331"/> 
+<img width="80%" src="https://github.com/pueser/food-killer/assets/117990884/d179d641-1963-451f-9001-209beebaf60f"/> 
 
 ## [검색(필터, 초성)] ##
 
