@@ -9,7 +9,7 @@ open API를 활용하여 전국의 음식점을 쉽게 찾을 수 있는 웹사�
 
 ## [메인페이지] ##
 
-<img width="65%" src="https://github.com/pueser/food-killer/assets/117990884/bfd50292-f330-4765-8c5e-a55671fcc560"/> 
+<img width="65%" src="https://github.com/pueser/food-killer/assets/117990884/92053705-90cb-4d63-a19d-75d4a98d755e"/> 
 
 ## [회원가입 - 이용약관 동의] ##
 
