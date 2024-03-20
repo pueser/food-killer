@@ -9,15 +9,9 @@ open API를 활용하여 전국의 음식점을 쉽게 찾을 수 있고 주변 
 <img width="65%" src="https://github.com/pueser/food-killer/assets/117990884/8be4484c-71d6-4224-9326-8eb7aa0cb742"/> 
 
 ## [회원가입] ##
+-회원가입은 두 단계로 진행됩니다. 첫 번째 단계: 이용약관, 개인정보 수집 및 이용 동의, 위치정보 이용약관에 동의, 두 번째 단계: 이메일 인증, 비밀번호, 닉네임 등의 개인정보 입력 후 회원가입 완료
 
 <img width="65%" src="https://github.com/pueser/food-killer/assets/117990884/ad3d3099-e44e-4d18-ae67-5714d9d418af"/> 
-
-
-<img width="80%" src="https://github.com/pueser/food-killer/assets/117990884/3084413f-2143-4a78-a194-a6eaa8f25ff1f"/> 
-
-## [회원가입 - 정보입력] ##
-
-<img width="80%" src="https://github.com/pueser/food-killer/assets/117990884/80538528-800e-4ab1-a7a7-4fa5df244938"/> 
 
 ## [비밀번호 찾기] ##
 
