@@ -16,7 +16,7 @@ open API를 활용하여 전국의 음식점을 쉽게 찾을 수 있고 주변 
 ## [비밀번호 찾기] ##
 -SMTP 프로토콜을 사용하여 이메일 기능을 구현했습니다. 랜덤한 비밀번호 생성에는 Random과 StringBuffer 클래스를 활용하여 기존의 비밀번호 유효성을 준수하는 문자열을 생성했습니다. <br/>생성된 비밀번호는 이메일을 통해 사용자에게 전송되어 인증을 완료할 수 있도록 구현되었습니다.
 
-<img width="80%" src="https://github.com/pueser/food-killer/assets/117990884/183b01f9-c0b9-4b65-bacf-a4208b4d0b44"/> 
+<img width="70%" src="https://github.com/pueser/food-killer/assets/117990884/183b01f9-c0b9-4b65-bacf-a4208b4d0b44"/> 
 
 ## [검색(필터, 초성)] ##
 
